@@ -1,0 +1,18 @@
+<h3>Rentals for <%= @cat.name %></h3>
+
+<table>
+  <tr>
+    <% @rentals.first.attributes.each do |variable, value| %>
+      <th> <%= variable %> </th>
+    <% end %>
+  </tr>
+  
+  <% @rentals.each do |rental| %>
+
+  <tr>
+    <% rental.attributes.each do |variable, value| %>
+      <th> <%= value %> </th>
+    <% end %>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,4 @@
+<h3>Edit Cat <%= @cat.name %><h3>
+
+<%= render partial: "form", locals: {submit_name: 'Update Cat',
+  my_action: cat_url(@cat), my_method: 'Patch'} %>

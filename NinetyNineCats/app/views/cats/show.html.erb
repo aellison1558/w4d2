@@ -1,0 +1,40 @@
+<h3> <%= @cat.name %> </h3>
+<br>
+<a href=' <%= edit_cat_url %> ' > Edit Cat </a>
+<%= button_to "delete", @cat, action: :destroy, method: :delete %>
+<br>
+<table>
+  <tr>
+    <% @cat.attributes.each do |variable, value| %>
+      <th> <%= variable %> </th>
+    <% end %>
+  </tr>
+
+  <tr>
+    <% @cat.attributes.each do |variable, value| %>
+      <th> <%= value %> </th>
+    <% end %>
+  </tr>
+</table>
+
+<h3>Rentals for <%= @cat.name %></h3>
+
+<table>
+  <tr>
+      <th>Start Date</th>
+      <th>End Date</th>
+  </tr>
+
+  <% @cat.cat_rental_requests.order(:start_date).each do |rental| %>
+
+  <tr>
+    <td> <%= rental.start_date %></td>
+    <td> <%= rental.end_date %></td>
+    <td> <%= rental.status %></td>
+    <% if rental.status == "PENDING" %>
+      <td> <%= button_to "approve", rental, params: {stuff: "approve!"}, method: :patch %> </td>
+      <td> <%= button_to "deny", rental, params: {stuff: "deny!"}, method: :patch %> </td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>

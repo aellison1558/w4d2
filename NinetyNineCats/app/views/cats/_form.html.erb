@@ -1,0 +1,33 @@
+<form action = <%= my_action %> method="Post" >
+  <input type='hidden' name="_method" value=<%= my_method %>>
+
+  <label>Name</label>
+  <input type="text" name="cat[name]" value=<%= @cat.name %>>
+  <br>
+
+  <label>Birth Date</label>
+  <input type="date" name="cat[birth_date]" value=<%= @cat.birth_date %>>
+  <br>
+
+  <label>Color</label>
+  <select name="cat[color]">
+    <% Cat.color_options.each do |color| %>
+    <option value=<%= color %> <%= 'selected' if color == @cat.color%> > <%= color.upcase %></option>
+    <% end %>
+  </select>
+  <br>
+
+  <label>Sex</label>
+  <select name="cat[sex]">
+    <% ['f', 'm'].each do |sex| %>
+    <option value=<%= sex %> <%= 'selected' if sex == @cat.sex%>> <%= sex.upcase %> </option>
+    <% end %>
+  </select>
+  <br>
+
+  <label>Description</label>
+  <textarea name="cat[description]" ><%= @cat.description %></textarea>
+  <br>
+
+  <input type="submit" value=" <%= submit_name %> ">
+</form>
